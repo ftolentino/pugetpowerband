@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Link } from 'gatsby';
+import '../styles/global.css';
 
-export default class navbar extends Component {
-  render() {
+const Navbar = () => {
     return (
-      <nav className="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-gray-700 bg-white">
-        <ul>
-          <li>
+      <nav className="flex flex-row justify-end space-x-2">
+          <Link to="/about">
             About
-          </li>
-          <li>Music</li>
-          <li>Media</li>
-          <li>Contact</li>
-        </ul>
+          </Link>
+          <Link to="/music">Music</Link>
+          <Link to="/media">Media</Link>
+          <Link to="/contact">Contact</Link>
       </nav>
-    )
-  }
+    );
 }
+
+export default Navbar;
