@@ -6,9 +6,18 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import '../styles/global.css';
 
 
-const Navbar_t = () => {
+// btn.addEventListener('click', () => {
+//     menu.classList.toggle('hidden');
+//   });
+  
+  const Navbar_t = () => {
   const [click, setClick] = useState(false);
-
+  // const [button, setButton] = useState(true);
+  
+  // const btn = document.querySelector('button.mobile-menu-button');
+  // const menu = document.querySelector('mobile-menu');
+    
+  
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () =>setClick(false);
   return (
@@ -36,18 +45,20 @@ const Navbar_t = () => {
             </div>
             {/* mobile button */}
             <div className='md:hidden flex items-center'>
-              <button className='mobile-menu-button' onClick={handleClick}>
-                {click ? <FaTimes className='w-8 h-8'/> : <FaBars className='w-8 h-8'/>}
+              <button onClick={handleClick}>
+                { click ? <FaTimes className='w-8 h-8'/> : <FaBars className='w-8 h-8'/> }
               </button>
             </div>
           </div>
         </div>
-        {/* mobile menu */}  
-        <div className='mobile-menu hidden md:hidden text-yellow-900'>
-          <Link to="/music" className='block py-2 px-2 text-sm hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Music</Link>
-          <Link to="/media" className='block py-2 px-2 text-sm hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Media</Link>
-          <Link to="/about" className='block py-2 px-2 text-sm hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>About</Link>
-          <Link to="/contact" className='block py-2 px-2 text-sm hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Contact</Link>
+        {/* mobile menu */}
+        <div onClick={handleClick}>  
+          <div className={click ? 'visible' : 'hidden'}>
+            <Link to="/music" className='block py-2 px-2 text-sm text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Music</Link>
+            <Link to="/media" className='block py-2 px-2 text-sm text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Media</Link>
+            <Link to="/about" className='block py-2 px-2 text-sm text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>About</Link>
+            <Link to="/contact" className='block py-2 px-2 text-sm text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Contact</Link>
+          </div>
         </div>
       </nav>
     </div>
