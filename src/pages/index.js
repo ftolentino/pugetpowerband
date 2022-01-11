@@ -1,10 +1,15 @@
-import React from "react"
-// import Navbar from "../components/Navbar";
-import Navbar_t from "../components/Navbar_t";
+import React from "react";
+import Layout from "../components/Layout";
+
 export default function Home() {
   return (
-    <section>
-      <Navbar_t />
-    </section>
+    <Layout>
+      <section>
+        <div>
+          <h1>Puget Power</h1>
+          <p>Rock band from Factoria, WA</p>
+        </div>
+      </section>
+    </Layout>
   );
 }

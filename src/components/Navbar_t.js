@@ -12,12 +12,7 @@ import '../styles/global.css';
   
   const Navbar_t = () => {
   const [click, setClick] = useState(false);
-  // const [button, setButton] = useState(true);
-  
-  // const btn = document.querySelector('button.mobile-menu-button');
-  // const menu = document.querySelector('mobile-menu');
-    
-  
+ 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () =>setClick(false);
   return (
@@ -53,11 +48,11 @@ import '../styles/global.css';
         </div>
         {/* mobile menu */}
         <div onClick={handleClick}>  
-          <div className={click ? 'visible' : 'hidden'}>
-            <Link to="/music" className='block py-2 px-2 text-sm text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Music</Link>
-            <Link to="/media" className='block py-2 px-2 text-sm text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Media</Link>
-            <Link to="/about" className='block py-2 px-2 text-sm text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>About</Link>
-            <Link to="/contact" className='block py-2 px-2 text-sm text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Contact</Link>
+          <div className={click ? 'visible md:hidden' : 'hidden'}>
+            <Link to="/music" className='block py-2 px-2 text-base text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Music</Link>
+            <Link to="/media" className='block py-2 px-2 text-base text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Media</Link>
+            <Link to="/about" className='block py-2 px-2 text-base text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>About</Link>
+            <Link to="/contact" className='block py-2 px-2 text-base text-yellow-900 hover:bg-red-400 hover:text-yellow-100' onClick={closeMobileMenu}>Contact</Link>
           </div>
         </div>
       </nav>
