@@ -6,6 +6,9 @@
 
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    title: `Puget Power Band`,
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-postcss`,
@@ -13,6 +16,17 @@ module.exports = {
             postCssPlugins: [require("tailwindcss")],
             },
     },
+
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `imgs`,
+        path: `${__dirname}/src/imgs`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     
     {
       resolve: `gatsby-plugin-purgecss`,
