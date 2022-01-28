@@ -41,7 +41,7 @@ import '../styles/global.css';
             {/* mobile button */}
             <div className='md:hidden flex items-center'>
               <button onClick={handleClick}>
-                { click ? <FaTimes className='w-8 h-8'/> : <FaBars className='w-8 h-8'/> }
+                { click ? <FaTimes className='w-8 h-8 text-yellow-100'/> : <FaBars className='w-8 h-8 text-yellow-100'/> }
               </button>
             </div>
           </div>
