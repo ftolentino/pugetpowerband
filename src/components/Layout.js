@@ -8,8 +8,8 @@ export default function Layout({ children }) {
       <div>
         { children }
       </div>
-      <footer className="flex flex-row justify-center">
-        <p>@Copyright 2022 Puget Power</p>
+      <footer className="my-4 flex flex-row justify-center">
+        <p className="text-yellow-900">@Copyright 2022 Made with Gatsby</p>
       </footer>
     </div>
   );
