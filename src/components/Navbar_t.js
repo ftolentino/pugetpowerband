@@ -18,9 +18,8 @@ import '../styles/global.css';
   return (
     <div>
       <nav className='bg-red-300'>
-        <div className="max-w-screen-sm xl:max-w-full mx-auto px-4">
+        <div className="max-w-full mx-4">
           <div className="flex justify-between">
-            <div className="flex space-x-4">
               {/* logo */}
               <div>
                 <Link to='/' className='flex items-center py-2 px-2 text-yellow-100 hover:text-indigo-400 transition duration-300' onClick={closeMobileMenu}>
@@ -29,8 +28,7 @@ import '../styles/global.css';
                     PP
                   </span>
                 </Link>     
-              </div>   
-            </div>
+              </div>
             {/* primary nav */}
             <div className='hidden md:flex items-center space-x-3 font-semibold text-yellow-900 text-3xl'>
               <Link to="/music" className='flex items-center py-2 px-2 hover:text-yellow-100'>Music</Link>
