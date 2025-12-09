@@ -59,7 +59,7 @@ const Hero = () => {
       )}
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,7 +73,12 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent"
+          className="text-[4.75rem] leading-tight md:text-[7.5rem] md:leading-none font-bold mb-8 bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent relative z-20 pb-2"
+          style={{ 
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            paintOrder: 'stroke fill',
+          }}
         >
           {bandInfo?.name || 'Puget Power Band'}
         </motion.h1>
