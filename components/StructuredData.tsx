@@ -26,7 +26,7 @@ export default function StructuredData() {
 
   if (!bandInfo) return null
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pugetpowerband.vercel.app'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pugetpowerband.com'
 
   // Music Group / Organization Schema
   const organizationSchema = {

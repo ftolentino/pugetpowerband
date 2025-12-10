@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Puget Power Band' }],
   creator: 'Puget Power Band',
   publisher: 'Puget Power Band',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://pugetpowerband.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://pugetpowerband.com'),
   alternates: {
     canonical: '/',
   },
