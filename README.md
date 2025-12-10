@@ -10,6 +10,7 @@ A modern, responsive website for Puget Power Band built with Next.js and Sanity 
 - 🎨 **Headless CMS**: Easy content management with Sanity Studio
 - 📱 **Mobile Responsive**: Optimized for all device sizes
 - ⚡ **Fast Performance**: Built with Next.js for optimal performance
+- 🔍 **SEO Optimized**: Comprehensive SEO with structured data, sitemap, and meta tags
 - 🚀 **Easy Deployment**: Ready for deployment on Vercel
 
 ## Tech Stack
@@ -104,8 +105,9 @@ Open [http://localhost:3000](http://localhost:3000) to view the website.
 1. Push your code to GitHub
 2. Connect your repository to [Vercel](https://vercel.com)
 3. Add environment variables in Vercel dashboard:
-   - \`NEXT_PUBLIC_SANITY_PROJECT_ID\`
-   - \`NEXT_PUBLIC_SANITY_DATASET\`
+   - \`NEXT_PUBLIC_SANITY_PROJECT_ID\` - Your Sanity project ID
+   - \`NEXT_PUBLIC_SANITY_DATASET\` - Usually "production"
+   - \`NEXT_PUBLIC_SITE_URL\` - Your site URL (e.g., https://yourdomain.com)
 4. Deploy!
 
 ### Deploy to Other Platforms
@@ -156,12 +158,32 @@ pugetpowerband/
 └── public/                # Static assets
 \`\`\`
 
+## SEO Optimization
+
+This website includes comprehensive SEO features:
+
+### Built-in Features
+- ✅ **Meta Tags**: Optimized titles, descriptions, and Open Graph tags
+- ✅ **Sitemap**: Auto-generated at `/sitemap.xml`
+- ✅ **Robots.txt**: Search engine directives at `/robots.txt`
+- ✅ **Structured Data**: JSON-LD schema for MusicGroup and Events
+- ✅ **Social Sharing**: Twitter Cards and Open Graph images
+
+### Setup Required
+1. **Add Site URL**: Set `NEXT_PUBLIC_SITE_URL` in your environment variables
+2. **Create OG Image**: Add a 1200x630px image at `/public/og-image.jpg`
+3. **Google Search Console**: Submit your site and sitemap
+4. **Fill Sanity Content**: Complete all band info fields for best SEO
+
+📖 **See [SEO-GUIDE.md](SEO-GUIDE.md) for detailed instructions**
+
 ## Support
 
 For questions or issues:
 1. Check the [Next.js documentation](https://nextjs.org/docs)
 2. Review [Sanity documentation](https://www.sanity.io/docs)
-3. Open an issue in this repository
+3. See [SEO-GUIDE.md](SEO-GUIDE.md) for SEO help
+4. Open an issue in this repository
 
 ## License
 
