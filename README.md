@@ -45,7 +45,7 @@ npm install
 cp .env.local.example .env.local
 ```
 
-4. Update \`.env.local\` with your Sanity credentials:
+4. Update `.env.local` with your Sanity credentials:
 
 ```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
@@ -75,7 +75,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the website.
 
 ### Accessing Sanity Studio
 
-1. Go to \`https://your-studio-name.sanity.studio\`
+1. Go to `https://your-studio-name.sanity.studio`
 2. Sign in with your Sanity account
 3. Start adding content!
 
@@ -105,9 +105,9 @@ Open [http://localhost:3000](http://localhost:3000) to view the website.
 1. Push your code to GitHub
 2. Connect your repository to [Vercel](https://vercel.com)
 3. Add environment variables in Vercel dashboard:
-   - \`NEXT_PUBLIC_SANITY_PROJECT_ID\` - Your Sanity project ID
-   - \`NEXT_PUBLIC_SANITY_DATASET\` - Usually "production"
-   - \`NEXT_PUBLIC_SITE_URL\` - Your site URL (e.g., https://yourdomain.com)
+   - `NEXT_PUBLIC_SANITY_PROJECT_ID` - Your Sanity project ID
+   - `NEXT_PUBLIC_SANITY_DATASET` - Usually "production"
+   - `NEXT_PUBLIC_SITE_URL` - Your site URL (e.g., https://yourdomain.com)
 4. Deploy!
 
 ### Deploy to Other Platforms
@@ -121,23 +121,23 @@ This is a standard Next.js application and can be deployed to:
 ## Customization
 
 ### Colors and Styling
-- Edit \`tailwind.config.ts\` to change color scheme
-- Modify \`app/globals.css\` for global styles
+- Edit `tailwind.config.ts` to change color scheme
+- Modify `app/globals.css` for global styles
 - Component-specific styles are in individual component files
 
 ### Content Structure
-- Modify Sanity schemas in \`sanity/schemas/\` directory
-- Update TypeScript interfaces in \`lib/sanity.ts\`
+- Modify Sanity schemas in `sanity/schemas/` directory
+- Update TypeScript interfaces in `lib/sanity.ts`
 - Adjust GROQ queries as needed
 
 ### Adding Features
-- Add new components in \`components/\` directory
-- Create new pages in \`app/\` directory
+- Add new components in `components/` directory
+- Create new pages in `app/` directory
 - Extend Sanity schemas for additional content types
 
 ## Project Structure
 
-\`\`\`
+```
 pugetpowerband/
 ├── app/                    # Next.js app directory
 │   ├── globals.css        # Global styles
@@ -156,7 +156,7 @@ pugetpowerband/
 │   ├── config.ts          # Sanity config
 │   └── schemas/           # Content schemas
 └── public/                # Static assets
-\`\`\`
+```
 
 ## SEO Optimization
 
