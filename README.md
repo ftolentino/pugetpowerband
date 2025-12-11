@@ -26,14 +26,14 @@ A modern, responsive website for Puget Power Band built with Next.js and Sanity 
 
 ### 1. Installation
 
-\`\`\`bash
+```bash
 # Clone the repository
 git clone <your-repo-url>
 cd pugetpowerband
 
 # Install dependencies
 npm install
-\`\`\`
+```
 
 ### 2. Sanity Setup
 
@@ -41,33 +41,33 @@ npm install
 2. Note your Project ID and Dataset name
 3. Copy the environment variables:
 
-\`\`\`bash
+```bash
 cp .env.local.example .env.local
-\`\`\`
+```
 
 4. Update \`.env.local\` with your Sanity credentials:
 
-\`\`\`env
+```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
 NEXT_PUBLIC_SANITY_DATASET=production
-\`\`\`
+```
 
 ### 3. Deploy Sanity Studio
 
-\`\`\`bash
+```bash
 # Install Sanity CLI
 npm install -g @sanity/cli
 
 # Deploy your studio
 cd sanity
 sanity deploy
-\`\`\`
+```
 
 ### 4. Run Development Server
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 Open [http://localhost:3000](http://localhost:3000) to view the website.
 
