@@ -28,7 +28,7 @@ A modern, responsive website for Puget Power Band built with Next.js and Sanity 
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/ftolentino/pugetpowerband.git
 cd pugetpowerband
 
 # Install dependencies
