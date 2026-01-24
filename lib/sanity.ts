@@ -58,9 +58,7 @@ export const queries = {
   upcomingShows: `*[_type == "show" && date >= now()] | order(date asc){
     _id,
     title,
-    venue,
-    city,
-    state,
+    venueAddress,
     date,
     doors,
     showTime,
@@ -75,9 +73,7 @@ export const queries = {
   pastShows: `*[_type == "show" && date < now()] | order(date desc)[0...6]{
     _id,
     title,
-    venue,
-    city,
-    state,
+    venueAddress,
     date
   }`
 }
@@ -111,9 +107,7 @@ export interface Photo {
 export interface Show {
   _id: string
   title: string
-  venue: string
-  city: string
-  state?: string
+  venueAddress: string
   date: string
   doors?: string
   showTime?: string

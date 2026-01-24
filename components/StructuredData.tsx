@@ -54,15 +54,14 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'MusicEvent',
     name: show.title,
-    description: show.description || `${bandInfo.name} live at ${show.venue}`,
+    description: show.description || `${bandInfo.name} live at ${show.venueAddress}`,
     startDate: show.date,
     location: {
       '@type': 'Place',
-      name: show.venue,
+      name: show.venueAddress,
       address: {
         '@type': 'PostalAddress',
-        addressLocality: show.city,
-        addressRegion: show.state,
+        streetAddress: show.venueAddress,
       },
     },
     performer: {

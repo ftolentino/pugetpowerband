@@ -95,9 +95,14 @@ const Shows = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-gray-300">
                 <MapPin size={16} className="text-primary-400 flex-shrink-0" />
-                <span className="break-words">
-                  {show.venue}, {show.city}{show.state && `, ${show.state}`}
-                </span>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(show.venueAddress)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="break-words hover:text-primary-300 underline underline-offset-2 transition-colors"
+                >
+                  {show.venueAddress}
+                </a>
               </div>
               
               {(show.doors || show.showTime) && (

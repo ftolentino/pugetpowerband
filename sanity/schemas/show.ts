@@ -12,21 +12,11 @@ export default defineType({
       validation: Rule => Rule.required()
     }),
     defineField({
-      name: 'venue',
-      title: 'Venue',
+      name: 'venueAddress',
+      title: 'Venue Address',
       type: 'string',
+      description: 'Full address of the venue',
       validation: Rule => Rule.required()
-    }),
-    defineField({
-      name: 'city',
-      title: 'City',
-      type: 'string',
-      validation: Rule => Rule.required()
-    }),
-    defineField({
-      name: 'state',
-      title: 'State/Province',
-      type: 'string',
     }),
     defineField({
       name: 'date',
@@ -110,16 +100,15 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      venue: 'venue',
-      city: 'city',
+      venueAddress: 'venueAddress',
       date: 'date'
     },
     prepare(selection) {
-      const { title, venue, city, date } = selection
+      const { title, venueAddress, date } = selection
       const formattedDate = new Date(date).toLocaleDateString()
       return {
         title,
-        subtitle: `${venue}, ${city} - ${formattedDate}`
+        subtitle: `${venueAddress} - ${formattedDate}`
       }
     }
   }
