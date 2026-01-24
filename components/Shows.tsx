@@ -91,11 +91,11 @@ const Shows = () => {
             )}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4 mb-4">
+          <div className="grid md:grid-cols-2 gap-2 md:gap-4 mb-4">
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-gray-300">
                 <MapPin size={16} className="text-primary-400 flex-shrink-0" />
-                <span className="truncate">
+                <span className="break-words">
                   {show.venue}, {show.city}{show.state && `, ${show.state}`}
                 </span>
               </div>
