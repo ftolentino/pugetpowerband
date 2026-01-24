@@ -54,15 +54,15 @@ const Shows = () => {
         isPastShow ? 'opacity-75' : ''
       }`}
     >
-      <div className="flex gap-6">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
         {/* Date */}
-        <div className="text-center flex-shrink-0">
+        <div className="flex sm:flex-col items-center gap-3 sm:gap-0 sm:text-center flex-shrink-0">
           <div className="bg-primary-600 text-white rounded-lg p-3 min-w-[80px]">
             <div className="text-2xl font-bold">{formatShowDate(show.date).day}</div>
             <div className="text-sm uppercase">{formatShowDate(show.date).month}</div>
           </div>
           {show.soldOut && (
-            <div className="bg-red-600 text-white text-xs py-1 px-2 rounded-full mt-2 font-medium">
+            <div className="bg-red-600 text-white text-xs py-1 px-2 rounded-full sm:mt-2 font-medium">
               SOLD OUT
             </div>
           )}
@@ -70,9 +70,9 @@ const Shows = () => {
 
         {/* Show Details */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between mb-3">
-            <div>
-              <h3 className="text-xl font-bold text-white mb-1">{show.title}</h3>
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+            <div className="min-w-0">
+              <h3 className="text-xl font-bold text-white mb-1 break-words">{show.title}</h3>
               <p className="text-gray-300">{formatShowDate(show.date).full}</p>
             </div>
             {!isPastShow && show.ticketUrl && !show.soldOut && (
@@ -82,7 +82,7 @@ const Shows = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2"
+                className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 self-start flex-shrink-0"
               >
                 <Ticket size={16} />
                 Tickets
