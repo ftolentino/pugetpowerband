@@ -1,42 +1,15 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Play, Music } from 'lucide-react'
-import { sanityClient, queries, getImageUrl, BandInfo } from '@/lib/sanity'
+import { getImageUrl, BandInfo } from '@/lib/sanity'
 
-const Hero = () => {
-  const [bandInfo, setBandInfo] = useState<BandInfo | null>(null)
-  const [loading, setLoading] = useState(true)
+interface HeroProps {
+  bandInfo: BandInfo | null
+}
 
-  useEffect(() => {
-    const fetchBandInfo = async () => {
-      try {
-        const data = await sanityClient.fetch(queries.bandInfo)
-        setBandInfo(data)
-      } catch (error) {
-        console.error('Error fetching band info:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchBandInfo()
-  }, [])
-
-  if (loading) {
-    return (
-      <section id="home" className="relative h-screen flex items-center justify-center">
-        <motion.div
-          className="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-        />
-      </section>
-    )
-  }
-
+const Hero = ({ bandInfo }: HeroProps) => {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -74,7 +47,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-[4.75rem] leading-tight md:text-[7.5rem] md:leading-none font-bold mb-8 bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent relative z-20 pb-2"
-          style={{ 
+          style={{
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             paintOrder: 'stroke fill',

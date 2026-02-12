@@ -1,25 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { Music, Heart } from 'lucide-react'
-import { sanityClient, queries, BandInfo } from '@/lib/sanity'
+import { BandInfo } from '@/lib/sanity'
 
-const Footer = () => {
-  const [bandInfo, setBandInfo] = useState<BandInfo | null>(null)
+interface FooterProps {
+  bandInfo: BandInfo | null
+}
 
-  useEffect(() => {
-    const fetchBandInfo = async () => {
-      try {
-        const data = await sanityClient.fetch(queries.bandInfo)
-        setBandInfo(data)
-      } catch (error) {
-        console.error('Error fetching band info:', error)
-      }
-    }
-
-    fetchBandInfo()
-  }, [])
-
+const Footer = ({ bandInfo }: FooterProps) => {
   const currentYear = new Date().getFullYear()
 
   const socialIcons = {
@@ -58,7 +46,7 @@ const Footer = () => {
               </h3>
             </div>
             <p className="text-gray-400 max-w-sm">
-              {bandInfo?.description || 
+              {bandInfo?.description ||
                 "Creating powerful, memorable experiences through music and live performance."
               }
             </p>
@@ -94,7 +82,7 @@ const Footer = () => {
           {/* Social Media & Contact */}
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-white">Connect With Us</h4>
-            
+
             {bandInfo?.socialLinks && Object.values(bandInfo.socialLinks).some(link => link) && (
               <div className="flex gap-3">
                 {Object.entries(bandInfo.socialLinks).map(([platform, url]) => {
@@ -129,7 +117,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-          <p>© {currentYear} {bandInfo?.name || 'Puget Power Band'}. All rights reserved.</p>
+          <p>&copy; {currentYear} {bandInfo?.name || 'Puget Power Band'}. All rights reserved.</p>
           <p className="flex items-center gap-1 mt-4 md:mt-0">
             Made with <Heart className="w-4 h-4 text-red-500" /> for live music
           </p>

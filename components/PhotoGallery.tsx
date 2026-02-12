@@ -4,12 +4,14 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Camera, X, ChevronLeft, ChevronRight, Filter } from 'lucide-react'
-import { sanityClient, queries, getImageUrl, Photo } from '@/lib/sanity'
+import { getImageUrl, Photo } from '@/lib/sanity'
 
-const PhotoGallery = () => {
-  const [photos, setPhotos] = useState<Photo[]>([])
-  const [filteredPhotos, setFilteredPhotos] = useState<Photo[]>([])
-  const [loading, setLoading] = useState(true)
+interface PhotoGalleryProps {
+  photos: Photo[]
+}
+
+const PhotoGallery = ({ photos }: PhotoGalleryProps) => {
+  const [filteredPhotos, setFilteredPhotos] = useState<Photo[]>(photos)
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
   const [currentFilter, setCurrentFilter] = useState<string>('all')
 
@@ -20,22 +22,6 @@ const PhotoGallery = () => {
     { value: 'studio', label: 'Studio' },
     { value: 'bts', label: 'Behind the Scenes' },
   ]
-
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        const data = await sanityClient.fetch(queries.photos)
-        setPhotos(data || [])
-        setFilteredPhotos(data || [])
-      } catch (error) {
-        console.error('Error fetching photos:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchPhotos()
-  }, [])
 
   useEffect(() => {
     if (currentFilter === 'all') {
@@ -57,31 +43,17 @@ const PhotoGallery = () => {
 
   const navigatePhoto = (direction: 'prev' | 'next') => {
     if (!selectedPhoto) return
-    
+
     const currentIndex = filteredPhotos.findIndex(photo => photo._id === selectedPhoto._id)
     let newIndex
-    
+
     if (direction === 'prev') {
       newIndex = currentIndex === 0 ? filteredPhotos.length - 1 : currentIndex - 1
     } else {
       newIndex = currentIndex === filteredPhotos.length - 1 ? 0 : currentIndex + 1
     }
-    
-    setSelectedPhoto(filteredPhotos[newIndex])
-  }
 
-  if (loading) {
-    return (
-      <section id="gallery" className="py-20 px-4">
-        <div className="container mx-auto text-center">
-          <motion.div
-            className="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full mx-auto"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          />
-        </div>
-      </section>
-    )
+    setSelectedPhoto(filteredPhotos[newIndex])
   }
 
   return (
@@ -156,6 +128,7 @@ const PhotoGallery = () => {
                       src={getImageUrl(photo.image, 600, 600)}
                       alt={photo.alt}
                       fill
+                      loading="lazy"
                       className="object-cover transition-transform group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-end">
@@ -203,7 +176,7 @@ const PhotoGallery = () => {
                 height={800}
                 className="max-w-full max-h-[80vh] object-contain rounded-lg"
               />
-              
+
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
                 <h3 className="text-white text-xl font-semibold mb-2">{selectedPhoto.title}</h3>
                 {selectedPhoto.photographer && (

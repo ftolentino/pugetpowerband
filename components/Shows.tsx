@@ -1,35 +1,18 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Calendar, MapPin, Clock, DollarSign, ExternalLink, Users, Ticket } from 'lucide-react'
-import { format, parseISO, isPast } from 'date-fns'
-import { sanityClient, queries, Show } from '@/lib/sanity'
+import { format, parseISO } from 'date-fns'
+import { Show } from '@/lib/sanity'
 
-const Shows = () => {
-  const [upcomingShows, setUpcomingShows] = useState<Show[]>([])
-  const [pastShows, setPastShows] = useState<Show[]>([])
-  const [loading, setLoading] = useState(true)
+interface ShowsProps {
+  upcomingShows: Show[]
+  pastShows: Show[]
+}
+
+const Shows = ({ upcomingShows, pastShows }: ShowsProps) => {
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past'>('upcoming')
-
-  useEffect(() => {
-    const fetchShows = async () => {
-      try {
-        const [upcoming, past] = await Promise.all([
-          sanityClient.fetch(queries.upcomingShows),
-          sanityClient.fetch(queries.pastShows)
-        ])
-        setUpcomingShows(upcoming || [])
-        setPastShows(past || [])
-      } catch (error) {
-        console.error('Error fetching shows:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchShows()
-  }, [])
 
   const formatShowDate = (dateString: string) => {
     try {
@@ -104,7 +87,7 @@ const Shows = () => {
                   {show.venueAddress}
                 </a>
               </div>
-              
+
               {(show.doors || show.showTime) && (
                 <div className="flex items-center gap-2 text-gray-300">
                   <Clock size={16} className="text-primary-400 flex-shrink-0" />
@@ -124,7 +107,7 @@ const Shows = () => {
                   <span>{show.ticketPrice}</span>
                 </div>
               )}
-              
+
               <div className="flex items-center gap-2 text-gray-300">
                 <Users size={16} className="text-primary-400 flex-shrink-0" />
                 <span>{show.ageRestriction === 'all-ages' ? 'All Ages' : show.ageRestriction}</span>
@@ -153,20 +136,6 @@ const Shows = () => {
       </div>
     </motion.div>
   )
-
-  if (loading) {
-    return (
-      <section id="shows" className="py-20 px-4 bg-black/20">
-        <div className="container mx-auto text-center">
-          <motion.div
-            className="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full mx-auto"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          />
-        </div>
-      </section>
-    )
-  }
 
   return (
     <section id="shows" className="py-20 px-4 bg-black/20">

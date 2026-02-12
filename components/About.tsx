@@ -1,43 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Users, MapPin, Mail } from 'lucide-react'
-import { sanityClient, queries, BandInfo } from '@/lib/sanity'
+import { BandInfo } from '@/lib/sanity'
 
-const About = () => {
-  const [bandInfo, setBandInfo] = useState<BandInfo | null>(null)
-  const [loading, setLoading] = useState(true)
+interface AboutProps {
+  bandInfo: BandInfo | null
+}
 
-  useEffect(() => {
-    const fetchBandInfo = async () => {
-      try {
-        const data = await sanityClient.fetch(queries.bandInfo)
-        setBandInfo(data)
-      } catch (error) {
-        console.error('Error fetching band info:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchBandInfo()
-  }, [])
-
-  if (loading) {
-    return (
-      <section id="about" className="py-20 px-4">
-        <div className="container mx-auto text-center">
-          <motion.div
-            className="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full mx-auto"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          />
-        </div>
-      </section>
-    )
-  }
-
+const About = ({ bandInfo }: AboutProps) => {
   return (
     <section id="about" className="py-20 px-4 bg-black/20">
       <div className="container mx-auto max-w-4xl">
@@ -61,7 +32,7 @@ const About = () => {
             className="space-y-6"
           >
             <p className="text-lg text-gray-300 leading-relaxed">
-              {bandInfo?.description || 
+              {bandInfo?.description ||
                 "We are passionate musicians dedicated to creating powerful, memorable experiences through our music. Our sound blends energy, emotion, and technical skill to deliver performances that resonate with audiences long after the last note fades."
               }
             </p>

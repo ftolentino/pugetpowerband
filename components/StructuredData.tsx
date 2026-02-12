@@ -1,29 +1,11 @@
-'use client'
+import { BandInfo, Show } from '@/lib/sanity'
 
-import { useEffect, useState } from 'react'
-import { sanityClient, queries, BandInfo, Show } from '@/lib/sanity'
+interface StructuredDataProps {
+  bandInfo: BandInfo | null
+  shows: Show[]
+}
 
-export default function StructuredData() {
-  const [bandInfo, setBandInfo] = useState<BandInfo | null>(null)
-  const [shows, setShows] = useState<Show[]>([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [info, upcomingShows] = await Promise.all([
-          sanityClient.fetch(queries.bandInfo),
-          sanityClient.fetch(queries.upcomingShows)
-        ])
-        setBandInfo(info)
-        setShows(upcomingShows || [])
-      } catch (error) {
-        console.error('Error fetching structured data:', error)
-      }
-    }
-
-    fetchData()
-  }, [])
-
+export default function StructuredData({ bandInfo, shows }: StructuredDataProps) {
   if (!bandInfo) return null
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pugetpowerband.com'
@@ -117,4 +99,3 @@ export default function StructuredData() {
     </>
   )
 }
-

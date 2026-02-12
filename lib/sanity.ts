@@ -19,6 +19,7 @@ export const getImageUrl = (source: any, width = 800, height = 600) => {
     .height(height)
     .fit('crop')
     .crop('center')
+    .auto('format')
     .url()
 }
 
